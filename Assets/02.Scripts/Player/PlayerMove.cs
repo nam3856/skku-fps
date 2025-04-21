@@ -17,12 +17,12 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         Vector3 dir = new Vector3(h, 0, v);
-        dir.y = 0f;
         dir = dir.normalized;
         // 메인 카메라를 기준으로 방향을 변환한다.
         dir = Camera.main.transform.TransformDirection(dir);
         // TransformDirection: 지역 공간의 벡터를 월드 공간의 벡터로 바꿔주는 함수
 
+        dir.y = 0f;
 
         transform.position += dir * MoveSpeed * Time.deltaTime;
     }
