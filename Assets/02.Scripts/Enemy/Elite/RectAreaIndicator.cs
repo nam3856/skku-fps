@@ -14,6 +14,7 @@ public class RectAreaIndicator : MonoBehaviour
     private bool _finished;
     public Vector3 Offset = new Vector3(0, 0.2040305f, 0);
     public GameObject FinalRect;
+    public int index;
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class RectAreaIndicator : MonoBehaviour
     {
         if (owner != null)
         {
-            owner.StartRectangleAttack();
+            owner.StartAttack(index);
         }
         gameObject.SetActive(false);
         FinalRect.SetActive(false);

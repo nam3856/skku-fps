@@ -925,7 +925,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1428206483f8b0546a22b54c58121418, type: 3}
   - {fileID: 8300000, guid: e07b095fd206dd341a9c679a95640013, type: 3}
   ShotEffects:
-  - {fileID: 2897912224543546075}
+  - {fileID: 0}
   - {fileID: 387446848372996504}
   - {fileID: 1543235971464481934}
   - {fileID: 4063070122313308535}
@@ -934,11 +934,6 @@ MonoBehaviour:
   - {fileID: 1616603765300675746}
   EnemyController: {fileID: 4643167843123536105}
   IsAttacking: 0
---- !u!1 &2897912224543546075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3037501347820680601, guid: f432554f564e69242897607d34218939, type: 3}
-  m_PrefabInstance: {fileID: 148667928969031490}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &387446848372899638
 PrefabInstance:
   m_ObjectHideFlags: 0

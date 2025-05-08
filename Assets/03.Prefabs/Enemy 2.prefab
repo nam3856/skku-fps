@@ -194,6 +194,7 @@ MonoBehaviour:
   AggressiveTraceTime: 10
   AggressiveTraceDistance: 5
   MaxHealth: 10
+  EliteAScript: {fileID: 0}
   StartPosition: {x: 0, y: 0, z: 0}
 --- !u!143 &1262333108544385010
 CharacterController:

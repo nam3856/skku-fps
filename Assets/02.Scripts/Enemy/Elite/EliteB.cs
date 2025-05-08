@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class EliteB : MonoBehaviour
 {
+    public enum AttackType
+    {
+        Attack,
+        AreaAttack,
+    }
     public GameObject TrailRendererObj;
     public GameObject Indicator;
     public AudioSource AudioSource;
@@ -21,31 +26,37 @@ public class EliteB : MonoBehaviour
     public LayerMask TestLayer;
     public Animator TestAnimator;
 
-    private void Start()
-    {
-        StartRectIndicator();
-    }
-    internal void StartRectIndicator()
+    internal void StartAreaAttackRectIndicator()
     {
         IsAttacking = true;
         //EnemyController.Agent.ResetPath();
         //EnemyController.Agent.enabled = false;
         TrailRendererObj.SetActive(true);
         Indicator.SetActive(true);
-    }
-    
-    internal void StartRectangleAttack()
-    {
-        Step = 0;
-        AttackStep = 0;
-        TestAnimator.SetTrigger("AreaAttack");
-        //EnemyController.Animator.SetTrigger("AreaAttack");
+        Indicator.GetComponent<RectAreaIndicator>().length = 0.5f;
     }
 
-    private void Update()
+    internal void StartDashAttackRectIndicator()
     {
-        TestController.Move(transform.forward * Time.deltaTime * AttackPosition[Step]);
+
     }
+    
+    internal void StartAttack(int index)
+    {
+        AttackType type = (AttackType)index;
+        Step = 0;
+        AttackStep = 0;
+        TestAnimator.applyRootMotion = true;
+        TestAnimator.SetTrigger(type.ToString());
+        //EnemyController.Animator.SetTrigger(type.ToString());
+    }
+
+    public void EndAttack()
+    {
+        TestAnimator.applyRootMotion = false;
+        TestAnimator.SetTrigger("EndAttack");
+    }
+
     public void AttackMove()
     {
         
@@ -79,5 +90,19 @@ public class EliteB : MonoBehaviour
                 }
             }
         }
+    }
+
+    void OnAnimatorMove()
+    {
+        if (TestAnimator.applyRootMotion)
+        {
+            Vector3 deltaPosition = TestAnimator.deltaPosition;
+            TestController.Move(deltaPosition);
+        }
+        //if (EnemyController.Animator.applyRootMotion)
+        //{
+        //    Vector3 deltaPosition = EnemyController.Animator.deltaPosition;
+        //    EnemyController.Controller.Move(deltaPosition);
+        //}
     }
 }
