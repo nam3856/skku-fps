@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     [Header("Attack Settings")]
     public float AttackCooldown;
+    public float SkillCooldown;
     public float AttackRange;
     public float AttackDamage;
     public LayerMask enemyLayer;
@@ -52,8 +53,12 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public float MaxHealth;
 
+    internal float LastAttack;
+    internal float LastSkill;
+
     [Header("Optional (for elite enemies)")]
-    public EliteA EliteAScript;
+    public EliteA EliteAScript; 
+    public EliteB EliteBScript;
 
     public Vector3 StartPosition;
 
@@ -129,8 +134,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         Agent.enabled = true;
         Agent.updatePosition = true;
         Agent.updateRotation = true;
-
-        
     }
 
     public void ForceInit()
