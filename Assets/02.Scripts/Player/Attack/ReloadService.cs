@@ -17,6 +17,7 @@ public class ReloadService : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance?.State != GameState.Run) return;
         if (Input.GetKeyDown(KeyCode.R) && ammoManager.CurrentAmmo < combatData.MaxAmmo && !isReloading)
             StartReload();
         if (isReloading)

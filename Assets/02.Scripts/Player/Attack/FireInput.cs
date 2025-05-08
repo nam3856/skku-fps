@@ -15,6 +15,7 @@ public class FireInput : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance?.State != GameState.Run) return;
         if (useBurst) HandleBurst();
         else if (Input.GetMouseButtonDown(0) && !isBursting)
             fireService.SingleFire();

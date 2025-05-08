@@ -22,6 +22,7 @@ public class GrenadeService : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance?.State != GameState.Run) return;
         if (Input.GetMouseButtonDown(1) && ammoManager.CurrentGrenade > 0)
         {
             audioSource.PlayOneShot(holdSound);

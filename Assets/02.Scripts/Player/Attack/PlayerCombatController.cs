@@ -42,6 +42,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.State != GameState.Run) return;
         if (Input.GetKeyDown(KeyCode.Alpha1)) EquipGun();
         if (Input.GetKeyDown(KeyCode.Alpha2)) EquipSword();
 
